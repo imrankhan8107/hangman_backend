@@ -9,7 +9,10 @@ async function initialize() {
   const PORT = process.env.PORT || 8000;
 
   app.use((req, res, next) => {
-    res.set("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+    res.set("Access-Control-Allow-Origin", [
+      "http://127.0.0.1:5500",
+      "https://imrankhan8107.github.io/hangman_frontend/",
+    ]);
     res.header("Access-Control-Allow-Headers", "content-type");
     next();
   });
@@ -18,8 +21,8 @@ async function initialize() {
 
   app.get("/cookie", (req, res) => {
     res.setHeader("Set-Cookie", "name=imran");
-    res.send("Hello World")
-  })
+    res.send("Hello World");
+  });
 
   await sequelize.sync();
   // Run only once as it will create duplicate entries
