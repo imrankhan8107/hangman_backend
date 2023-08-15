@@ -10,7 +10,8 @@ async function initialize() {
 
   app.use((req, res, next) => {
     res.set("Access-Control-Allow-Origin", [
-      "https://hangman-frontend-seven.vercel.app",
+      "http://127.0.0.1:5500",
+      
     ]);
     res.header("Access-Control-Allow-Headers", "content-type");
     next();
