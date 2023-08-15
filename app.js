@@ -1,6 +1,6 @@
 const express = require("express");
 const Router = require("./routes");
-const { sequelize } = require("./models");
+const { sequelize, Word } = require("./models");
 
 async function initialize() {
   const app = express();
@@ -10,8 +10,7 @@ async function initialize() {
 
   app.use((req, res, next) => {
     res.set("Access-Control-Allow-Origin", [
-      "http://127.0.0.1:5500/",
-      "https://hangman-frontend-seven.vercel.app/",
+      "https://hangman-frontend-seven.vercel.app",
     ]);
     res.header("Access-Control-Allow-Headers", "content-type");
     next();
@@ -26,21 +25,22 @@ async function initialize() {
 
   await sequelize.sync();
   // Run only once as it will create duplicate entries
-  // await Word.bulkCreate([
-  //   { title: "apple" },
-  //   { title: "banana" },
-  //   { title: "orange" },
-  //   { title: "mango" },
-  //   { title: "grapes" },
-  //   { title: "pineapple" },
-  //   { title: "strawberry" },
-  //   { title: "blueberry" },
-  //   { title: "watermelon" },
-  //   { title: "kiwi" },
-  //   { title: "papaya" },
-  //   { title: "pear" },
-  //   { title: "peach" },
-  // ]);
+  await Word.bulkCreate([
+    { title: "apple" },
+    { title: "banana" },
+    { title: "orange" },
+    { title: "mango" },
+    { title: "grapes" },
+    { title: "pineapple" },
+    { title: "strawberry" },
+    { title: "blueberry" },
+    { title: "watermelon" },
+    { title: "kiwi" },
+    { title: "papaya" },
+    { title: "pear" },
+    { title: "peach" },
+    { title: "pomegranate" },
+  ]);
   app.listen(PORT, () => {
     console.log(`Running on port http://localhost:${PORT}`);
   });
