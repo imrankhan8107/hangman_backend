@@ -6,4 +6,4 @@ const router = Router();
 router.post("/", Controller.CreateSession);
 router.post("/:id/play", Controller.PlaySession);
 
-module.exports = router;
+module.exports = router; 

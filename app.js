@@ -9,9 +9,7 @@ async function initialize() {
   const PORT = process.env.PORT || 8000;
 
   app.use((req, res, next) => {
-    res.set("Access-Control-Allow-Origin", [
-      "https://hangman-frontend-seven.vercel.app",
-    ]);
+    res.set("Access-Control-Allow-Origin", ["http://localhost:3000"]);
     res.header("Access-Control-Allow-Headers", "content-type");
     next();
   });
@@ -22,25 +20,40 @@ async function initialize() {
     res.setHeader("Set-Cookie", "name=imran");
     res.send("Hello World");
   });
-
+  // await Word.bulkCreate([
+  //   { title: "apple" },
+  //   { title: "banana" },
+  //   { title: "orange" },
+  //   { title: "mango" },
+  //   { title: "grapes" },
+  //   { title: "pineapple" },
+  //   { title: "strawberry" },
+  //   { title: "blueberry" },
+  //   { title: "watermelon" },
+  //   { title: "kiwi" },
+  //   { title: "papaya" },
+  //   { title: "pear" },
+  //   { title: "peach" },
+  //   { title: "pomegranate" },
+  // ]);
   await sequelize.sync();
   // Run only once as it will create duplicate entries
-  await Word.bulkCreate([
-    { title: "apple" },
-    { title: "banana" },
-    { title: "orange" },
-    { title: "mango" },
-    { title: "grapes" },
-    { title: "pineapple" },
-    { title: "strawberry" },
-    { title: "blueberry" },
-    { title: "watermelon" },
-    { title: "kiwi" },
-    { title: "papaya" },
-    { title: "pear" },
-    { title: "peach" },
-    { title: "pomegranate" },
-  ]);
+  // await Word.bulkCreate([
+  //   { title: "apple" },
+  //   { title: "banana" },
+  //   { title: "orange" },
+  //   { title: "mango" },
+  //   { title: "grapes" },
+  //   { title: "pineapple" },
+  //   { title: "strawberry" },
+  //   { title: "blueberry" },
+  //   { title: "watermelon" },
+  //   { title: "kiwi" },
+  //   { title: "papaya" },
+  //   { title: "pear" },
+  //   { title: "peach" },
+  //   { title: "pomegranate" },
+  // ]);
   app.listen(PORT, () => {
     console.log(`Running on port http://localhost:${PORT}`);
   });
