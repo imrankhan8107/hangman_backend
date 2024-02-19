@@ -11,6 +11,7 @@ async function initialize() {
   app.use((req, res, next) => {
     res.set("Access-Control-Allow-Origin", [
       "https://hangman-frontend-seven.vercel.app",
+      // "http://localhost:3000",
     ]);
     res.header("Access-Control-Allow-Headers", "content-type");
     next();
@@ -19,7 +20,7 @@ async function initialize() {
   app.use("/api", Router);
 
   app.get("/cookie", (req, res) => {
-    res.setHeader("Set-Cookie", "name=imran");
+    res.setHeader("Set-Cookie", "name=Hangman App");
     res.send("Hello World");
   });
   // await Word.bulkCreate([
